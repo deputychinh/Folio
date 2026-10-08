@@ -1,0 +1,21 @@
+@layer components {
+  .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4);
+    border-top: var(--border-width) solid var(--color-border);
+  }
+
+  .pagination__status {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .pagination__buttons {
+    display: flex;
+    gap: var(--space-2);
+  }
+}

@@ -1,0 +1,13 @@
+@layer pages {
+  .settings__tabs {
+    margin-bottom: var(--space-5);
+  }
+
+  .settings__body {
+    max-width: 48rem;
+  }
+
+  .settings__lead {
+    color: var(--color-text-muted);
+  }
+}

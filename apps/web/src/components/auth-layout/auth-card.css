@@ -1,0 +1,33 @@
+@layer components {
+  /* The form column on auth pages. */
+  .auth-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    width: 100%;
+    max-width: var(--form-max);
+  }
+
+  .auth-card__title {
+    font-size: var(--text-3xl);
+  }
+
+  .auth-card__lead {
+    margin-top: var(--space-2);
+    color: var(--color-text-muted);
+  }
+
+  .auth-card__footer {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .auth-card__hint {
+    padding: var(--space-2) var(--space-3);
+    border: 1px dashed var(--color-border-strong);
+    border-radius: var(--radius-md);
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+}

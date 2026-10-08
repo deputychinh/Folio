@@ -1,0 +1,42 @@
+@layer pages {
+  .catalog-picker {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+  }
+
+  .catalog-picker__item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-1) var(--space-4);
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .catalog-picker__item:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-softer);
+  }
+
+  .catalog-picker__name {
+    font-weight: var(--weight-semibold);
+  }
+
+  .catalog-picker__description {
+    grid-column: 1;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .catalog-picker__price {
+    grid-row: 1 / 3;
+    grid-column: 2;
+    align-self: center;
+    font-variant-numeric: tabular-nums;
+  }
+}

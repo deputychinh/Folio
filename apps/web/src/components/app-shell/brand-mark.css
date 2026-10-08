@@ -1,0 +1,13 @@
+@layer components {
+  .brand-mark {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-style: italic;
+    font-weight: var(--weight-medium);
+    letter-spacing: -0.02em;
+  }
+
+  .brand-mark__dot {
+    color: var(--color-accent);
+  }
+}

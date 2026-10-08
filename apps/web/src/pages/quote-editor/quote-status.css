@@ -1,0 +1,41 @@
+@layer pages {
+  .quote-status__dates {
+    display: grid;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  .quote-status__row {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .quote-status__term {
+    color: var(--color-text-muted);
+  }
+
+  .quote-status__value {
+    margin: 0;
+  }
+
+  .quote-status__answer {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+  }
+
+  .quote-status__reason {
+    padding-left: var(--space-3);
+    border-left: 3px solid var(--color-danger);
+    font-style: italic;
+  }
+
+  .quote-status__label {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    font-style: normal;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,27 @@
+@layer components {
+  /* Two or three options shown as one control (e.g. password / email link). */
+  .segmented {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 3px;
+    border-radius: var(--radius-md);
+    background: var(--color-surface-muted);
+  }
+
+  .segmented__option {
+    padding: var(--space-1) var(--space-4);
+    border: 0;
+    border-radius: calc(var(--radius-md) - 2px);
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    cursor: pointer;
+  }
+
+  .segmented__option[aria-pressed='true'] {
+    background: var(--color-surface);
+    color: var(--color-text);
+    box-shadow: var(--shadow-card);
+  }
+}

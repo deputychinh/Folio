@@ -1,0 +1,202 @@
+@layer components {
+  .quote-document {
+    --quote-document-accent: var(--color-accent);
+    --quote-document-pad: var(--space-7);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: var(--quote-document-pad);
+    border: var(--border-width) solid var(--color-border);
+    border-top: 4px solid var(--quote-document-accent);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-document);
+  }
+
+  .quote-document--compact {
+    --quote-document-pad: var(--space-5);
+
+    gap: var(--space-5);
+    font-size: var(--text-sm);
+  }
+
+  .quote-document__header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .quote-document__seller {
+    margin-bottom: var(--space-2);
+    color: var(--quote-document-accent);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+
+  .quote-document__title {
+    max-width: 28rem;
+    font-size: var(--text-3xl);
+    overflow-wrap: anywhere;
+  }
+
+  .quote-document--compact .quote-document__title {
+    font-size: var(--text-xl);
+  }
+
+  .quote-document__meta {
+    display: grid;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    text-align: right;
+  }
+
+  .quote-document--compact .quote-document__meta {
+    grid-auto-flow: column;
+    gap: var(--space-5);
+    text-align: left;
+  }
+
+  .quote-document__meta-term {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+
+  .quote-document__meta-value {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  .quote-document__parties {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: var(--space-5);
+    padding: var(--space-5) 0;
+    border-block: var(--border-width) solid var(--color-border);
+  }
+
+  .quote-document__label {
+    margin-bottom: var(--space-1);
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+
+  .quote-document__party {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+  }
+
+  .quote-document__contact {
+    color: var(--color-text-muted);
+  }
+
+  .quote-document__items {
+    width: 100%;
+  }
+
+  .quote-document__th {
+    padding: 0 0 var(--space-2);
+    border-bottom: var(--border-width) solid var(--color-text);
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-caps);
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .quote-document__td {
+    padding: var(--space-3) 0;
+    border-bottom: var(--border-width) solid var(--color-border);
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+
+  .quote-document__th--number,
+  .quote-document__td--number {
+    padding-left: var(--space-4);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .quote-document__totals {
+    display: grid;
+    gap: var(--space-2);
+    width: min(100%, 20rem);
+    margin-left: auto;
+  }
+
+  .quote-document__line {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .quote-document__term {
+    color: var(--color-text-muted);
+  }
+
+  .quote-document__amount {
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .quote-document__line--total {
+    margin-top: var(--space-2);
+    padding-top: var(--space-3);
+    border-top: 2px solid var(--quote-document-accent);
+  }
+
+  .quote-document__line--total .quote-document__term {
+    color: var(--color-text);
+    font-weight: var(--weight-semibold);
+  }
+
+  .quote-document__line--total .quote-document__amount {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+  }
+
+  .quote-document--compact .quote-document__line--total .quote-document__amount {
+    font-size: var(--text-xl);
+  }
+
+  .quote-document__notes {
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    white-space: pre-line;
+  }
+
+  @media (width < 36rem) {
+    .quote-document {
+      --quote-document-pad: var(--space-4);
+    }
+
+    .quote-document__meta {
+      text-align: left;
+    }
+
+    .quote-document__title {
+      font-size: var(--text-2xl);
+    }
+  }
+
+  @media print {
+    .quote-document {
+      border: 0;
+      box-shadow: none;
+    }
+  }
+}

@@ -1,0 +1,137 @@
+/*
+ * Folio design tokens. The ONLY file allowed to contain raw colour values (Stylelint enforces it).
+ * Level 1 — palette (--brand-*): the brand colours. Components never use these directly.
+ * Level 2 — semantic (--color-*, --space-*, …): what components use.
+ * Contrast ratios are listed in docs/plan.md §8.4 (all text pairs pass WCAG AA).
+ */
+@layer tokens {
+  :root {
+    /* ---------- Palette ---------- */
+    --brand-ink-900: #1b2733;
+    --brand-ink-700: #2e3b48;
+    --brand-teal-800: #173d47;
+    --brand-teal-700: #1f4e5a;
+    --brand-teal-600: #2a6573;
+    --brand-teal-500: #3a7f8e;
+    --brand-teal-100: #e3eef0;
+    --brand-teal-50: #f1f7f8;
+    --brand-ochre-700: #964719;
+    --brand-ochre-600: #b4561f;
+    --brand-ochre-100: #f6e7dc;
+    --brand-paper: #faf8f3;
+    --brand-paper-deep: #f3efe6;
+    --brand-white: #fff;
+    --brand-stone-600: #4a545d;
+    --brand-stone-500: #5b6670;
+    --brand-stone-300: #cfc8ba;
+    --brand-stone-200: #e4dfd4;
+    --brand-stone-100: #efebe3;
+    --brand-green-700: #2f7d4f;
+    --brand-green-100: #e2f1e8;
+    --brand-amber-700: #8a5e00;
+    --brand-amber-100: #f8ecd0;
+    --brand-red-700: #b42318;
+    --brand-red-100: #fbe4e1;
+    --brand-blue-700: #2f5e9e;
+    --brand-blue-100: #e3ebf6;
+    --brand-shadow: 27 39 51; /* ink-900 as RGB channels for rgb(... / alpha) */
+
+    /* ---------- Semantic colours ---------- */
+    --color-bg: var(--brand-paper);
+    --color-bg-sunken: var(--brand-paper-deep);
+    --color-surface: var(--brand-white);
+    --color-surface-muted: var(--brand-stone-100);
+    --color-text: var(--brand-ink-900);
+    --color-text-muted: var(--brand-stone-500);
+    --color-text-inverse: var(--brand-white);
+    --color-border: var(--brand-stone-200);
+    --color-border-strong: var(--brand-stone-300);
+    --color-primary: var(--brand-teal-700);
+    --color-primary-hover: var(--brand-teal-600);
+    --color-primary-active: var(--brand-teal-800);
+    --color-primary-soft: var(--brand-teal-100);
+    --color-primary-softer: var(--brand-teal-50);
+    --color-accent: var(--brand-ochre-600);
+    --color-accent-strong: var(--brand-ochre-700);
+    --color-accent-soft: var(--brand-ochre-100);
+    --color-focus: var(--brand-teal-500);
+    --color-success: var(--brand-green-700);
+    --color-success-soft: var(--brand-green-100);
+    --color-warning: var(--brand-amber-700);
+    --color-warning-soft: var(--brand-amber-100);
+    --color-danger: var(--brand-red-700);
+    --color-danger-soft: var(--brand-red-100);
+    --color-info: var(--brand-blue-700);
+    --color-info-soft: var(--brand-blue-100);
+
+    /* Quote status → colour pair (used only by the badge block). */
+    --color-status-draft: var(--brand-stone-600);
+    --color-status-draft-soft: var(--brand-stone-100);
+    --color-status-sent: var(--color-info);
+    --color-status-sent-soft: var(--color-info-soft);
+    --color-status-viewed: var(--brand-teal-700);
+    --color-status-viewed-soft: var(--brand-teal-100);
+    --color-status-accepted: var(--color-success);
+    --color-status-accepted-soft: var(--color-success-soft);
+    --color-status-declined: var(--color-danger);
+    --color-status-declined-soft: var(--color-danger-soft);
+    --color-status-expired: var(--color-warning);
+    --color-status-expired-soft: var(--color-warning-soft);
+    --color-overlay: rgb(var(--brand-shadow) / 45%);
+
+    /* ---------- Typography ---------- */
+    --font-serif: 'Fraunces Variable', 'Iowan Old Style', georgia, serif;
+    --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', menlo, monospace;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-md: 1.125rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.5625rem;
+    --text-2xl: 1.953rem;
+    --text-3xl: 2.441rem;
+    --text-4xl: 3.052rem;
+    --leading-tight: 1.15;
+    --leading-snug: 1.35;
+    --leading-normal: 1.55;
+    --tracking-caps: 0.08em;
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+
+    /* ---------- Space, size, shape ---------- */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 14px;
+    --radius-pill: 999px;
+    --border-width: 1px;
+    --control-height: 2.5rem;
+    --control-height-sm: 2rem;
+    --sidebar-width: 15rem;
+    --content-max: 72rem;
+    --document-max: 52rem;
+    --form-max: 30rem;
+    --shadow-card: 0 1px 2px rgb(var(--brand-shadow) / 6%), 0 4px 16px rgb(var(--brand-shadow) / 4%);
+    --shadow-raised: 0 2px 6px rgb(var(--brand-shadow) / 8%), 0 16px 40px rgb(var(--brand-shadow) / 12%);
+    --shadow-document: 0 1px 3px rgb(var(--brand-shadow) / 8%), 0 24px 60px rgb(var(--brand-shadow) / 10%);
+    --ring: 0 0 0 3px var(--color-primary-soft);
+    --ring-danger: 0 0 0 3px var(--color-danger-soft);
+    --shadow-nav-active: inset 3px 0 0 var(--color-accent), var(--shadow-card);
+    --shadow-paper-stack: 0.35rem 0.35rem 0 var(--color-bg-sunken);
+    --duration-fast: 120ms;
+    --duration-base: 200ms;
+    --ease: cubic-bezier(0.2, 0, 0, 1);
+    --z-sticky: 10;
+    --z-overlay: 50;
+    --z-toast: 60;
+  }
+}

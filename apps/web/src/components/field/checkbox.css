@@ -1,0 +1,17 @@
+@layer components {
+  .checkbox {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    font-size: var(--text-sm);
+    cursor: pointer;
+  }
+
+  .checkbox__input {
+    flex-shrink: 0;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin: 0.15rem 0 0;
+    accent-color: var(--color-primary);
+  }
+}

@@ -1,0 +1,21 @@
+@layer components {
+  .form-message {
+    padding: var(--space-3) var(--space-4);
+    border-left: 3px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    background: var(--color-primary-softer);
+    font-size: var(--text-sm);
+  }
+
+  .form-message--error {
+    border-left-color: var(--color-danger);
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+  }
+
+  .form-message--success {
+    border-left-color: var(--color-success);
+    background: var(--color-success-soft);
+    color: var(--color-success);
+  }
+}
