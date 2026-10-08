@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Lint (ESLint + Stylelint BEM rules)
+        run: npm run lint
+      - name: Build shared package
+        run: npm run build -w @folio/shared
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Unit tests
+        run: npm test
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Start local Supabase (migrations + seed)
+        run: supabase start -x studio,imgproxy,edge-runtime,logflare,vector,supavisor
+      - name: Write .env from the local stack
+        run: |
+          eval "$(supabase status -o env)"
+          {
+            echo "SUPABASE_URL=$API_URL"
+            echo "SUPABASE_ANON_KEY=$ANON_KEY"
+            echo "SUPABASE_SERVICE_ROLE_KEY=$SERVICE_ROLE_KEY"
+            echo "APP_URL=http://localhost:5180"
+            echo "PORT=3001"
+            echo "VITE_SUPABASE_URL=$API_URL"
+            echo "VITE_SUPABASE_ANON_KEY=$ANON_KEY"
+          } > .env
+      - name: Generated DB types are up to date (enum contract)
+        run: |
+          npm run db:types
+          git diff --exit-code apps/api/src/supabase/database.types.ts
+      - name: Integration tests (API against Supabase, RLS, rate limit)
+        run: npm run test:integration
+
+      - name: Build
+        run: npm run build
+      - name: Bundle budget and secret scan
+        run: npm run check:bundle
+
+      - name: E2E (Playwright)
+        run: |
+          npx playwright install --with-deps chromium
+          npm run e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
