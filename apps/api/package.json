@@ -1,0 +1,36 @@
+{
+  "name": "@folio/api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "nest start --watch --exec \"node --env-file=../../.env\"",
+    "start": "node --env-file-if-exists=../../.env dist/main.js",
+    "test": "jest test/unit",
+    "typecheck": "tsc --noEmit",
+    "db:types": "supabase gen types typescript --local --schema public --workdir ../.. > src/supabase/database.types.ts",
+    "test:integration": "jest test/integration --runInBand"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.24",
+    "@nestjs/testing": "^11.2.7",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^26.6.4",
+    "@types/supertest": "^7.2.1",
+    "jest": "^29.7.0",
+    "supertest": "^7.3.1",
+    "ts-jest": "^29.4.14"
+  },
+  "dependencies": {
+    "@folio/shared": "*",
+    "@nestjs/common": "^11.2.7",
+    "@nestjs/core": "^11.2.7",
+    "@nestjs/platform-express": "^11.2.7",
+    "@supabase/supabase-js": "^2.117.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  }
+}
