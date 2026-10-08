@@ -1,0 +1,35 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-selector-bem-pattern", "stylelint-declaration-strict-value"],
+  "rules": {
+    "plugin/selector-bem-pattern": {
+      "preset": "bem",
+      "implicitComponents": ["apps/web/src/components/**/*.css", "apps/web/src/pages/**/*.css"]
+    },
+    "scale-unlimited/declaration-strict-value": [
+      ["/color$/", "fill", "stroke", "font-family", "z-index", "box-shadow"],
+      { "ignoreValues": ["transparent", "currentColor", "inherit", "none", "0", "1", "50%"], "disableFix": true }
+    ],
+    "color-no-hex": true,
+    "selector-max-id": 0,
+    "selector-max-compound-selectors": 3,
+    "declaration-no-important": true,
+    "selector-class-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
+    "custom-property-pattern": null,
+    "keyframes-name-pattern": null,
+    "no-descending-specificity": null,
+    "declaration-block-single-line-max-declarations": 2,
+    "comment-empty-line-before": null,
+    "import-notation": "string"
+  },
+  "overrides": [
+    {
+      "files": ["apps/web/src/styles/tokens.css"],
+      "rules": { "color-no-hex": null, "scale-unlimited/declaration-strict-value": null }
+    },
+    {
+      "files": ["apps/web/src/styles/base.css", "apps/web/src/styles/layout.css", "apps/web/src/styles/main.css", "apps/web/src/styles/layer-order.css"],
+      "rules": { "plugin/selector-bem-pattern": null }
+    }
+  ]
+}

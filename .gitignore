@@ -1,0 +1,13 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.local
+.vercel/
+supabase/.temp/
+playwright-report/
+test-results/
+.DS_Store
+test-results/
+.playwright/
+*.log

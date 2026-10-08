@@ -1,0 +1,45 @@
+{
+  "name": "folio",
+  "private": true,
+  "workspaces": [
+    "packages/shared",
+    "apps/api",
+    "apps/web"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "npm run build -w @folio/shared && concurrently -n api,web -c cyan,magenta \"npm run dev -w @folio/api\" \"npm run dev -w @folio/web\"",
+    "build": "npm run build -w @folio/shared && npm run build -w @folio/api && npm run build -w @folio/web",
+    "test": "npm run test --workspaces --if-present",
+    "test:integration": "npm run test:integration -w @folio/api",
+    "e2e": "playwright test",
+    "lint": "eslint . && stylelint \"apps/web/src/**/*.css\"",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "check:bundle": "node scripts/check-bundle.mjs",
+    "db:start": "supabase start",
+    "db:reset": "supabase db reset",
+    "db:types": "npm run db:types -w @folio/api",
+    "diagrams": "python3 docs/architecture/gen_diagrams.py --png",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.0",
+    "@vitest/coverage-v8": "^5.0.3",
+    "concurrently": "^10.0.5",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.9",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-declaration-strict-value": "^1.12.1",
+    "stylelint-selector-bem-pattern": "^5.0.0",
+    "supabase": "^2.120.0",
+    "tsup": "^8.5.1",
+    "typescript": "~5.9",
+    "typescript-eslint": "^8.71.1",
+    "vitest": "^5.0.3"
+  }
+}
